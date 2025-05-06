@@ -1,14 +1,16 @@
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
+    await mongoose.connect(process.env.MONGO_URI, {
+      dbName: 'rhythmvibes',
     });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.log('MongoDB connected');
+  } catch (err) {
+    console.error('DB connection error:', err);
     process.exit(1);
   }
 };
