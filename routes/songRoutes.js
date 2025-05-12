@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { getSongs, addSong } = require('../controllers/songController'); // ✅ Import functions
+const { getSongs, addSong } = require('../controllers/songController');
 
-// GET all songs
+// ✅ GET /api/songs → fetch all songs
 router.get('/', getSongs);
 
-// POST a new song
+// ✅ POST /api/songs → add a new song
 router.post('/', addSong);
 
 module.exports = router;

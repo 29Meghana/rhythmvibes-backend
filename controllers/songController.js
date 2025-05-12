@@ -1,7 +1,6 @@
 const Song = require('../models/Song');
 
-// @desc    Get all songs
-// @route   GET /api/songs
+// ✅ Get all songs
 exports.getSongs = async (req, res) => {
   try {
     const songs = await Song.find();
@@ -11,13 +10,12 @@ exports.getSongs = async (req, res) => {
   }
 };
 
-// @desc    Add a new song
-// @route   POST /api/songs
+// ✅ Add a new song
 exports.addSong = async (req, res) => {
-  const { title, artist, genre, image, audio } = req.body; // ✅ include audio
+  const { title, artist, genre, image, audio } = req.body;
 
   try {
-    const newSong = new Song({ title, artist, genre, image, audio }); // ✅ include audio
+    const newSong = new Song({ title, artist, genre, image, audio });
     await newSong.save();
     res.status(201).json(newSong);
   } catch (error) {
